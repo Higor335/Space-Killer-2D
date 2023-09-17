@@ -1,0 +1,33 @@
+Temática: Jogo estilo jetpack joyride, 2D e espacial.
+
+Objetivos do jogo{
+
+1 - desviar dos obstaculos
+2 - pegar moedas
+3 - matar inimigos 
+
+FUTURAMENTE{
+	loja de moedas para evoluir.
+}
+
+}
+
+funcionalidade dos inimigos{
+
+os inimigos aparecem periodicamente e são estaticos no eixo X ( no lado contrario do player ), eles podem atirar.
+
+Pelo menos 5 tipos de inimigos.
+
+cada inimigo morto soma no contador de "ELIMINAÇÕES" (canto superior esquerdo da tela)
+
+A cada 10 inimigos mortos aparece um boss que é maior, tem mais vida e atira projeteis maiores.
+
+pelo menos 3 tipos de boses
+
+Depois de matar o boss evolui a arma {
+1-revolver
+2-pistola
+3-smg
+4-Bazuca
+}
+}
