@@ -27,8 +27,8 @@ public class Mapa : MonoBehaviour{
             TetoRelativo = Teto;
             ChaoRelativo = Chao;
 
-            tempChao.transform.position += new Vector3(29.4f,0,0);
-            tempTeto.transform.position += new Vector3(29.4f,0,0);
+            tempChao.transform.position += new Vector3(89,0,0);
+            tempTeto.transform.position += new Vector3(89,0,0);
 
             Chao = tempChao;
             Teto = tempTeto;
