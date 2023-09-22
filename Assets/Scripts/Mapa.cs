@@ -20,15 +20,18 @@ public class Mapa : MonoBehaviour{
     // Update is called once per frame
     void Update()
     {
-        if(Jogador.transform.x > Chao.transform.x){
+        if(Jogador.transform.position.x > Chao.transform.position.x){
             var tempChao = ChaoRelativo;
             var tempTeto = TetoRelativo;
             
             TetoRelativo = Teto;
             ChaoRelativo = Chao;
 
-            tempChao.transform.position += new Vector3(29.4,0,0);
-            tempTeto.transform.position += new Vector3(29.4,0,0);
+            tempChao.transform.position += new Vector3(29.4f,0,0);
+            tempTeto.transform.position += new Vector3(29.4f,0,0);
+
+            Chao = tempChao;
+            Teto = tempTeto;
 
         }
     }
