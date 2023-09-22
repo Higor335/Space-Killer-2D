@@ -4,49 +4,69 @@ using UnityEngine;
 
 public class Jogador : MonoBehaviour{
 
-    public float velocidadeVertical = 7.0f; // Velocidade de movimento vertical
-    private Animator anim; // Referência para o componente Animator
+    public AudioSource Correndo;
+    public AudioSource Jetpack;
+    public AudioSource MusicaJogo;
+    public AudioSource DanoParede;
+    public AudioSource Tiro;
+
+    public float velocidadeVertical = 7.0f;
+    private Animator anim;
     public int vida=0;
     private bool invisivel = false;
+    bool jetpackAtivo = false;
+    bool correndoAtivo = false;
 
     void Start(){
-        anim = GetComponent<Animator>(); // Obtém o componente Animator
+        MusicaJogo.Play();
+        anim = GetComponent<Animator>();
+        jetpackAtivo = false;
+        correndoAtivo = false;
     }
 
     void Update(){
-
-
-        float movimentoVertical = Input.GetAxis("Vertical"); // Captura a entrada vertical (seta para cima ou "W")
-
-        // Movimento vertical
+        float movimentoVertical = Input.GetAxis("Vertical");
         transform.Translate(Vector3.up * movimentoVertical * velocidadeVertical * Time.deltaTime);
 
-        // Verifica se a posição do jogador é menor que -3.65
         if (transform.position.y < -3.65f){
             transform.position = new Vector3(transform.position.x, -3.65f, transform.position.z);
         }else if(transform.position.y > 3.88f){
             transform.position = new Vector3(transform.position.x, 3.88f, transform.position.z);
         }
 
-        // Verifica se o jogador está se movendo para cima e executa a animação correspondente
         if (transform.position.y > -3.60f){
-            anim.Play("fly"); // Inicia a animação "fly"
+            if (!jetpackAtivo) {
+                jetpackAtivo = true;
+                correndoAtivo = false;
+                Correndo.Stop();
+                Jetpack.Play();
+            }
+            anim.Play("fly");
         }
         else{
-            anim.Play("walk"); // Inicia a animação "idle" (ou o nome da sua animação de repouso)
+            if (!correndoAtivo) {
+                correndoAtivo = true;
+                jetpackAtivo = false;
+                Jetpack.Stop();
+                Correndo.Play();
+            }
+            anim.Play("walk");
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision){
+        DanoParede.Play();
         GameObject colisor = collision.collider.gameObject;
         
         if(vida==1){
+            MusicaJogo.Stop();
+            Correndo.Stop();
+            Jetpack.Stop();
             Time.timeScale = 0;//pausa o jogo
         }
 
         if (collision.gameObject.CompareTag("Obstaculo")){
             
-            //modifica a visibilidade do obstaculo para false por 1 segundo e depois true
             StartCoroutine(DesabilitaColisaoEpiscaJogador(collision.gameObject));
             vida--;
             string vidaa = vida+"";
@@ -55,14 +75,11 @@ public class Jogador : MonoBehaviour{
     }
 
     IEnumerator DesabilitaColisaoEpiscaJogador(GameObject obj){
-        //desativa o colider do objeto
-        
         Collider2D collider = obj.GetComponent<Collider2D>();
 
         if (GetComponent<Renderer>() != null){
             collider.enabled = false;
 
-            //Efeito de piscar quando tomou dano 
             StartCoroutine(BlinkEffect());
             yield return new WaitForSeconds(1f);
 
@@ -74,8 +91,8 @@ public class Jogador : MonoBehaviour{
         Renderer renderer = GetComponent<Renderer>();
 
         if (renderer != null){
-            invisivel = true; // O jogador está temporariamente invisivel
-            int numBlinks = 5; // Número de vezes que o personagem piscará
+            invisivel = true;
+            int numBlinks = 5;
 
             for (int i = 0; i < numBlinks; i++){
                 renderer.enabled = false;
@@ -87,7 +104,7 @@ public class Jogador : MonoBehaviour{
                 yield return new WaitForSeconds(0.1f);
             }
 
-            invisivel = false; // O jogador não está mais invisivel
+            invisivel = false;
         }
     }
 }
