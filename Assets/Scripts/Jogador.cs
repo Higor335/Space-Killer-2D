@@ -12,6 +12,8 @@ public class Jogador : MonoBehaviour
     }
 
     void Update(){
+
+
         float movimentoVertical = Input.GetAxis("Vertical"); // Captura a entrada vertical (seta para cima ou "W")
 
         // Movimento vertical
@@ -34,5 +36,16 @@ public class Jogador : MonoBehaviour
             anim.Play("walk"); // Inicia a animação "idle" (ou o nome da sua animação de repouso)
         }
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Obstaculo")){
+            anim.Play("walk");
+            Time.timeScale = 0; // Pausa o jogo
+            Debug.Log("Jogo pausado por colisão com obstáculo.");
+            // Aqui você pode adicionar qualquer outra ação que queira quando o jogador colide com um obstáculo.
+        }
+    }
+
 
 }
