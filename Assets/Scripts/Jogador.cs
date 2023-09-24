@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Jogador : MonoBehaviour{
 
@@ -10,12 +12,18 @@ public class Jogador : MonoBehaviour{
     public AudioSource DanoParede;
     public AudioSource Tiro;
 
+    public Image vida2;
+    public Image vida1;
+    public Image vida0;
+
+
     public float velocidadeVertical = 7.0f;
     private Animator anim;
     public int vida=0;
     private bool invisivel = false;
     bool jetpackAtivo = false;
     bool correndoAtivo = false;
+    Color32 CorDano = new Color32(73, 10, 10, 255);
 
     void Start(){
         MusicaJogo.Play();
@@ -58,7 +66,14 @@ public class Jogador : MonoBehaviour{
         DanoParede.Play();
         GameObject colisor = collision.collider.gameObject;
         
+        if(vida==3){
+            vida2.color = CorDano;
+        }
+        if(vida==2){
+            vida1.color = CorDano;
+        }
         if(vida==1){
+            vida0.color = CorDano;
             MusicaJogo.Stop();
             Correndo.Stop();
             Jetpack.Stop();
