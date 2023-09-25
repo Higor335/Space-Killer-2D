@@ -80,7 +80,7 @@ public class Jogador : MonoBehaviour{
             Time.timeScale = 0;//pausa o jogo
         }
 
-        if (collision.gameObject.CompareTag("Obstaculo")){
+        if (collision.gameObject.CompareTag("Obstaculo") || collision.gameObject.CompareTag("TiroMal")){
             
             StartCoroutine(DesabilitaColisaoEpiscaJogador(collision.gameObject));
             vida--;

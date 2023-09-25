@@ -29,6 +29,7 @@ public class Mapa : MonoBehaviour{
 
     // Start is called before the first frame update
     void Start(){
+        Screen.SetResolution(1308, 669, true);
         obstaculo1 = GerarObstaculo(Jogador.transform.position.x + 10);
         obstaculo2 = GerarObstaculo(obstaculo1.transform.position.x);
         obstaculo3 = GerarObstaculo(obstaculo2.transform.position.x);
