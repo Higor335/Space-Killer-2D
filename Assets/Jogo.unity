@@ -318,7 +318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -347, y: 119.29999}
+  m_AnchoredPosition: {x: -347, y: 161.99998}
   m_SizeDelta: {x: 31.88, y: 31.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &313868684
@@ -1068,7 +1068,7 @@ Transform:
   m_GameObject: {fileID: 1231836638}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.15, y: -3.69, z: 0}
+  m_LocalPosition: {x: -6.42, y: -3.69, z: 0}
   m_LocalScale: {x: 0.4864, y: 0.4709, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1191,6 +1191,9 @@ MonoBehaviour:
   MusicaJogo: {fileID: 1698293767}
   DanoParede: {fileID: 892495943}
   Tiro: {fileID: 1878837411}
+  vida2: {fileID: 1581125126}
+  vida1: {fileID: 313868684}
+  vida0: {fileID: 1579001594}
   velocidadeVertical: 7
   vida: 3
 --- !u!68 &1231836647
@@ -1525,7 +1528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -378.9, y: 119.3}
+  m_AnchoredPosition: {x: -378.9, y: 162}
   m_SizeDelta: {x: 31.88, y: 31.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1579001594
@@ -1600,7 +1603,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -315.19998, y: 119.29999}
+  m_AnchoredPosition: {x: -315.19998, y: 161.99998}
   m_SizeDelta: {x: 31.88, y: 31.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1581125126

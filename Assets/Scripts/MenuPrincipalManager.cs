@@ -10,6 +10,8 @@ public class MenuPrincipalManager : MonoBehaviour
     [SerializeField] private GameObject painelOpcoes;   
     public void Jogar()
     {
+        Screen.SetResolution(1308, 669, true);
+
         SceneManager.LoadScene(nomeDoLevelDeJogo);
     }
 
