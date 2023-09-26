@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Jogador : MonoBehaviour{
@@ -15,6 +16,8 @@ public class Jogador : MonoBehaviour{
     public Image vida2;
     public Image vida1;
     public Image vida0;
+
+    [SerializeField] private string nomeMenuPrincipal;
 
 
     public float velocidadeVertical = 7.0f;
@@ -60,6 +63,18 @@ public class Jogador : MonoBehaviour{
             }
             anim.Play("walk");
         }
+
+        if(PauseMenu.GamePausado){
+            MusicaJogo.Pause();
+            Correndo.Pause();
+            Jetpack.Pause();
+            DanoParede.Pause();
+        } else {
+            MusicaJogo.UnPause();
+            Correndo.UnPause();
+            Jetpack.UnPause();
+            DanoParede.UnPause();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision){
@@ -77,7 +92,7 @@ public class Jogador : MonoBehaviour{
             MusicaJogo.Stop();
             Correndo.Stop();
             Jetpack.Stop();
-            Time.timeScale = 0;//pausa o jogo
+            SceneManager.LoadScene(nomeMenuPrincipal);
         }
 
         if (collision.gameObject.CompareTag("Obstaculo") || collision.gameObject.CompareTag("TiroMal")){
