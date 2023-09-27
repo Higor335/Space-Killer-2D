@@ -157,7 +157,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 2.761992, y: 2.609752}
   m_EdgeRadius: 0
 --- !u!114 &-1653082961829335258
 MonoBehaviour:
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dbaf750cca2b8468a2e42411afd072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 4
   offsetX: 8
   tiroPrefab: {fileID: 1937798775903624126, guid: b0a5390e7edf0274aa88daac41f73627, type: 3}
   intervaloDeDisparo: 2

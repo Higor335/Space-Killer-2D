@@ -11,6 +11,7 @@ TagManager:
   - Inimigo
   - TiroMau
   - TiroMal
+  - Boss
   layers:
   - Default
   - TransparentFX

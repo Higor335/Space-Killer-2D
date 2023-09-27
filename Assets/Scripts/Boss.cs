@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class Inimigo : MonoBehaviour
+public class Boss : MonoBehaviour
 {
     private float minY = -3.60f;
     private float maxY = 3.70f;
-    public float speed = 1.0f;
+    public float speed = 1.5f;
     public float offsetX = 2.0f;
 
     public GameObject tiroPrefab; // Prefab do objeto redondo
-    public float intervaloDeDisparo = 2.0f; // Intervalo entre os tiros
+    public float intervaloDeDisparo = 1.5f; // Intervalo entre os tiros
 
     private float tempoUltimoDisparo = 0.0f;
 
@@ -38,7 +38,7 @@ public class Inimigo : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision){
         
-        if (collision.gameObject.CompareTag("TiroMau"))
+        if (collision.gameObject.CompareTag("Tiro"))
         {
             Debug.Log("tomou"); 
             hitsTaken++; // Soma após inimigo colidir com um projétil

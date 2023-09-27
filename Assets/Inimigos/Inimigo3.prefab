@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dbaf750cca2b8468a2e42411afd072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   offsetX: 8
   tiroPrefab: {fileID: 1937798775903624126, guid: b0a5390e7edf0274aa88daac41f73627, type: 3}
   intervaloDeDisparo: 3
@@ -136,7 +136,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.2075524, y: -0.2235179}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -147,7 +147,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 4.513309, y: 4.449445}
   m_EdgeRadius: 0
 --- !u!50 &-1895694430252509273
 Rigidbody2D:
