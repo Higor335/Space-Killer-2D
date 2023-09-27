@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour
     public float speed = 1.0f;
 
     private Transform cameraTransform;
-    private bool bossPresente = false;
+    private bool bossPresente = Boss.bossPresente;
     private int ContadorParaBoss = 0;
 
     void Start()
@@ -25,19 +25,16 @@ public class EnemyController : MonoBehaviour
     }
 
     void SpawnEnemyWithDelay(){
-
-        
-
         GameObject[] inimigos = GameObject.FindGameObjectsWithTag("Inimigo");
 
-        if(ContadorParaBoss == 3){
-            GerarBoss();
-            ContadorParaBoss = 0;
-        }
-
-        if (inimigos.Length == 0 && !bossPresente){
-            SpawnEnemy();
+        if (inimigos.Length == 0 && !Boss.bossPresente){
             ContadorParaBoss++;
+            if(ContadorParaBoss == 4){
+                GerarBoss();
+                ContadorParaBoss = 0;
+            }else{
+                SpawnEnemy();
+            }
         }
     }
 
@@ -87,9 +84,8 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void GerarBoss()
-{
-    bossPresente = true;
+    void GerarBoss(){
+    Boss.bossPresente = true;
     GameObject[] boss = GameObject.FindGameObjectsWithTag("Boss");
 
     float newY = Mathf.PingPong(Time.time * speed, maxY - minY) + minY;

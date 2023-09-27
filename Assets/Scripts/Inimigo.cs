@@ -1,4 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Inimigo : MonoBehaviour
 {
@@ -19,8 +23,9 @@ public class Inimigo : MonoBehaviour
 
     string dificuldade = MenuPrincipalManager.dificuldade; // Passagem da dificuldade static do script MenuPrincipalManager
 
-    void Start()
-    {
+    private bool invisivel = false;
+
+    void Start(){
         cameraTransform = Camera.main.transform;
     }
 
@@ -31,8 +36,7 @@ public class Inimigo : MonoBehaviour
         newPosition.y = newY;
         transform.position = newPosition;
 
-        if (Time.time - tempoUltimoDisparo >= intervaloDeDisparo)
-        {
+        if (Time.time - tempoUltimoDisparo >= intervaloDeDisparo){
             Disparar(); // Chama a função de disparo
             tempoUltimoDisparo = Time.time; // Atualiza o tempo do último disparo
         }
@@ -40,9 +44,9 @@ public class Inimigo : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision){
         
-        if (collision.gameObject.CompareTag("TiroMau"))
-        {
+        if (collision.gameObject.CompareTag("Tiro")){
             Debug.Log("tomou"); 
+            StartCoroutine(BlinkEffect());
             hitsTaken++; // Soma após inimigo colidir com um projétil
 
             int hitsNeeded = 0; // Variável que vai armazenar a vida do inimigo dependendo da dificuldade
@@ -67,12 +71,29 @@ public class Inimigo : MonoBehaviour
         }
     }
 
-    void Disparar()
-    {
+    void Disparar(){
         // Cria o objeto tiro
         GameObject tiro = Instantiate(tiroPrefab, transform.position, Quaternion.identity);
-        
-        // Aqui você pode configurar a velocidade ou direção do tiro, se necessário
-        // Exemplo: tiro.GetComponent<Rigidbody2D>().velocity = new Vector2(2.0f, 0.0f);
+    }
+
+    IEnumerator BlinkEffect(){
+        Renderer renderer = GetComponent<Renderer>();
+
+        if (renderer != null){
+            invisivel = true;
+            int numBlinks = 5;
+
+            for (int i = 0; i < numBlinks; i++){
+                renderer.enabled = false;
+
+                yield return new WaitForSeconds(0.1f);
+
+                renderer.enabled = true;
+
+                yield return new WaitForSeconds(0.1f);
+            }
+
+            invisivel = false;
+        }
     }
 }

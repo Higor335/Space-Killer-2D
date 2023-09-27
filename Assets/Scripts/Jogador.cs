@@ -19,6 +19,11 @@ public class Jogador : MonoBehaviour{
 
     [SerializeField] private string nomeMenuPrincipal;
 
+    public GameObject bulletPrefab; // Referência ao prefab da bala
+    public float fireRate = 1.5f; // Intervalo entre cada tiro
+
+    private float nextFire = 0.0f; // Tempo para o próximo tiro
+
 
     public float velocidadeVertical = 7.0f;
     private Animator anim;
@@ -75,27 +80,32 @@ public class Jogador : MonoBehaviour{
             Jetpack.UnPause();
             DanoParede.UnPause();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextFire) // Verifica se a barra de espaço foi pressionada e se o intervalo de tempo passou
+        {
+            nextFire = Time.time + fireRate; // Atualiza o tempo para o próximo tiro
+            Shoot();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision){
-        DanoParede.Play();
-        GameObject colisor = collision.collider.gameObject;
-        
-        if(vida==3){
-            vida2.color = CorDano;
-        }
-        if(vida==2){
-            vida1.color = CorDano;
-        }
-        if(vida==1){
-            vida0.color = CorDano;
-            MusicaJogo.Stop();
-            Correndo.Stop();
-            Jetpack.Stop();
-            SceneManager.LoadScene(nomeMenuPrincipal);
-        }
-
         if (collision.gameObject.CompareTag("Obstaculo") || collision.gameObject.CompareTag("TiroMau")){
+            DanoParede.Play();
+            GameObject colisor = collision.collider.gameObject;
+            
+            if(vida==3){
+                vida2.color = CorDano;
+            }
+            if(vida==2){
+                vida1.color = CorDano;
+            }
+            if(vida==1){
+                vida0.color = CorDano;
+                MusicaJogo.Stop();
+                Correndo.Stop();
+                Jetpack.Stop();
+                SceneManager.LoadScene(nomeMenuPrincipal);
+            }
             
             StartCoroutine(DesabilitaColisaoEpiscaJogador(collision.gameObject));
             vida--;
@@ -136,5 +146,12 @@ public class Jogador : MonoBehaviour{
 
             invisivel = false;
         }
+    }
+
+    void Shoot()
+    {
+        // Cria uma nova bala a partir do prefab na posição do jogador
+        Tiro.Play();
+        Instantiate(bulletPrefab, transform.position, transform.rotation);
     }
 }

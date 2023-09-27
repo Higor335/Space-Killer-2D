@@ -1,7 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class Boss : MonoBehaviour
-{
+public class Boss : MonoBehaviour{
     private float minY = -3.60f;
     private float maxY = 3.70f;
     public float speed = 1.5f;
@@ -15,7 +18,11 @@ public class Boss : MonoBehaviour
     private Transform cameraTransform;
     private int hitsTaken = 0;
 
+    public static bool bossPresente = false;
+
     string dificuldade = MenuPrincipalManager.dificuldade; // Passagem da dificuldade static do script MenuPrincipalManager
+
+    private bool invisivel = false;
 
     void Start()
     {
@@ -41,35 +48,57 @@ public class Boss : MonoBehaviour
         if (collision.gameObject.CompareTag("Tiro"))
         {
             Debug.Log("tomou"); 
+            StartCoroutine(BlinkEffect());
             hitsTaken++; // Soma após inimigo colidir com um projétil
 
             int hitsNeeded = 0; // Variável que vai armazenar a vida do inimigo dependendo da dificuldade
 
             switch (dificuldade){
                 case "facil":
-                    hitsNeeded = 3; // vida do inimigo no modo fácil
+                    hitsNeeded = 5; // vida do inimigo no modo fácil
                     break;
                 case "medio":
-                    hitsNeeded = 5; // vida do inimigo no modo medio
+                    hitsNeeded = 8; // vida do inimigo no modo medio
                     break;
                 case "dificil":
-                    hitsNeeded = 8; // vida do inimigo no modo difícil
+                    hitsNeeded = 11; // vida do inimigo no modo difícil
                     break;
             }
 
-            if (hitsTaken == hitsNeeded)
-            {
+            if (hitsTaken == hitsNeeded){
+                bossPresente = false;
                 Destroy(gameObject); // Destruir o inimigo após atingir o limite de tiros
             }
         }
     }
 
-    void Disparar()
-    {
+    void Disparar(){
         // Cria o objeto tiro
         GameObject tiro = Instantiate(tiroPrefab, transform.position, Quaternion.identity);
         
         // Aqui você pode configurar a velocidade ou direção do tiro, se necessário
         // Exemplo: tiro.GetComponent<Rigidbody2D>().velocity = new Vector2(2.0f, 0.0f);
+    }
+
+
+    IEnumerator BlinkEffect(){
+        Renderer renderer = GetComponent<Renderer>();
+
+        if (renderer != null){
+            invisivel = true;
+            int numBlinks = 5;
+
+            for (int i = 0; i < numBlinks; i++){
+                renderer.enabled = false;
+
+                yield return new WaitForSeconds(0.1f);
+
+                renderer.enabled = true;
+
+                yield return new WaitForSeconds(0.1f);
+            }
+
+            invisivel = false;
+        }
     }
 }
