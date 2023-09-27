@@ -14,6 +14,8 @@ public class FollowCameraVertical : MonoBehaviour
 
     private Transform cameraTransform;
     private int hitsTaken = 0;
+    
+    string dificuldade = MenuPrincipalManager.dificuldade;
 
     void Start()
     {
@@ -36,11 +38,29 @@ public class FollowCameraVertical : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision){
         
-        if (collision.gameObject.CompareTag("Tiro")){
-            Debug.Log("tomou");
-            hitsTaken++;
-            if (hitsTaken == 5){
-                Destroy(gameObject); // Destruir o inimigo após 3 tiros
+        if (collision.gameObject.CompareTag("Tiro"))
+        {
+            Debug.Log("tomou"); 
+            hitsTaken++; // Soma após inimigo colidir com um projétil
+
+            int hitsNeeded = 0; // Variável que vai armazenar a vida do inimigo dependendo da dificuldade
+
+            switch (dificuldade)
+            {
+                case "facil":
+                    hitsNeeded = 3; // vida do inimigo no modo fácil
+                    break;
+                case "medio":
+                    hitsNeeded = 5; // vida do inimigo no modo medio
+                    break;
+                case "dificil":
+                    hitsNeeded = 8; // vida do inimigo no modo difícil
+                    break;
+            }
+
+            if (hitsTaken == hitsNeeded)
+            {
+                Destroy(gameObject); // Destruir o inimigo após atingir o limite de tiros
             }
         }
     }

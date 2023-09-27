@@ -171,6 +171,10 @@ MonoBehaviour:
   painelMenuInicial: {fileID: 1415359967}
   painelOpcoes: {fileID: 1821364035}
   painelDificuldade: {fileID: 1020982232}
+  dificuldade: medio
+  btFacil: {fileID: 1194747555}
+  btMedio: {fileID: 864786117}
+  btDificil: {fileID: 718519429}
 --- !u!1 &245652621
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,7 +834,7 @@ GameObject:
   - component: {fileID: 718519430}
   - component: {fileID: 718519429}
   m_Layer: 5
-  m_Name: btDificio
+  m_Name: btDificil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -902,11 +906,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 50622518}
         m_TargetAssemblyTypeName: MenuPrincipalManager, Assembly-CSharp
-        m_MethodName: Jogar
-        m_Mode: 1
+        m_MethodName: SelecionarDificuldade
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 718519429}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1246,11 +1250,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 50622518}
         m_TargetAssemblyTypeName: MenuPrincipalManager, Assembly-CSharp
-        m_MethodName: Jogar
-        m_Mode: 1
+        m_MethodName: SelecionarDificuldade
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 864786117}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2286,11 +2290,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 50622518}
         m_TargetAssemblyTypeName: MenuPrincipalManager, Assembly-CSharp
-        m_MethodName: Jogar
-        m_Mode: 1
+        m_MethodName: SelecionarDificuldade
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1194747555}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2971,7 +2975,7 @@ GameObject:
   - component: {fileID: 1578352042}
   - component: {fileID: 1578352041}
   m_Layer: 5
-  m_Name: btTxtDificio
+  m_Name: btTxtDificil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3746,7 +3750,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MEDIUm
+  m_text: MEDIUM
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
