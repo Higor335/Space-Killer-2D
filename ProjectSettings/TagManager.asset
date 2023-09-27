@@ -9,6 +9,7 @@ TagManager:
   - Obstaculo
   - Tiro
   - Inimigo
+  - TiroMau
   - TiroMal
   layers:
   - Default

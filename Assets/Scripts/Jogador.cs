@@ -95,7 +95,7 @@ public class Jogador : MonoBehaviour{
             SceneManager.LoadScene(nomeMenuPrincipal);
         }
 
-        if (collision.gameObject.CompareTag("Obstaculo") || collision.gameObject.CompareTag("TiroMal")){
+        if (collision.gameObject.CompareTag("Obstaculo") || collision.gameObject.CompareTag("TiroMau")){
             
             StartCoroutine(DesabilitaColisaoEpiscaJogador(collision.gameObject));
             vida--;

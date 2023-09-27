@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FollowCameraVertical : MonoBehaviour
+public class Inimigo : MonoBehaviour
 {
     private float minY = -3.60f;
     private float maxY = 3.70f;
