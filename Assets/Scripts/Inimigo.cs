@@ -15,6 +15,8 @@ public class Inimigo : MonoBehaviour
     private Transform cameraTransform;
     private int hitsTaken = 0;
 
+    public static int pontuacao = 0;
+
     string dificuldade = MenuPrincipalManager.dificuldade; // Passagem da dificuldade static do script MenuPrincipalManager
 
     void Start()
@@ -59,6 +61,7 @@ public class Inimigo : MonoBehaviour
 
             if (hitsTaken == hitsNeeded)
             {
+                pontuacao++;
                 Destroy(gameObject); // Destruir o inimigo após atingir o limite de tiros
             }
         }

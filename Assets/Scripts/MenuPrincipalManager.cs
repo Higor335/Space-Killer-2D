@@ -16,6 +16,8 @@ public class MenuPrincipalManager : MonoBehaviour
 
     public Button btFacil, btMedio, btDificil;
 
+    int pontuacao = Inimigo.pontuacao;
+
     void Start()
     {
         // Listener dos botões
@@ -27,7 +29,7 @@ public class MenuPrincipalManager : MonoBehaviour
     public void Jogar()
     {
         Screen.SetResolution(1308, 669, true);
-
+        Inimigo.pontuacao = 0; // Reseta Pontuação
         SceneManager.LoadScene(nomeDoLevelDeJogo);
     }
 
