@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class FollowCameraVertical : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class FollowCameraVertical : MonoBehaviour
 
     private Transform cameraTransform;
     private int hitsTaken = 0;
+
+    public static int pontuacao = 0;
 
     string dificuldade = MenuPrincipalManager.dificuldade; // Passagem da dificuldade static do script MenuPrincipalManager
 
@@ -38,7 +42,7 @@ public class FollowCameraVertical : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision){
         
-        if (collision.gameObject.CompareTag("Tiro"))
+        if (collision.gameObject.CompareTag("TiroMal"))
         {
             Debug.Log("tomou"); 
             hitsTaken++; // Soma após inimigo colidir com um projétil
@@ -59,7 +63,9 @@ public class FollowCameraVertical : MonoBehaviour
             }
 
             if (hitsTaken == hitsNeeded)
-            {
+            {   
+                pontuacao++;
+                
                 Destroy(gameObject); // Destruir o inimigo após atingir o limite de tiros
             }
         }
