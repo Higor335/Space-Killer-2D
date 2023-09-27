@@ -12,7 +12,7 @@ public class MenuPrincipalManager : MonoBehaviour
     [SerializeField] private GameObject painelOpcoes;
     [SerializeField] private GameObject painelDificuldade;
 
-    public static string dificuldade = "medio";
+    public static string dificuldade = "medio"; // Cria variavel estática (variavel global)
 
     public Button btFacil, btMedio, btDificil;
 
@@ -31,24 +31,24 @@ public class MenuPrincipalManager : MonoBehaviour
         SceneManager.LoadScene(nomeDoLevelDeJogo);
     }
 
-    public void SelecionarDificuldade(Button button)
+    public void SelecionarDificuldade(Button button) // Verifica a dificuldade de acordo com o botão escolhido
     {
         switch (button.name)
         {
             case "btFacil":
-                dificuldade = "facil";
+                dificuldade = "facil"; // Atualiza a String dificuldade para "facil"
                 Debug.Log(dificuldade);
-                Jogar();
+                Jogar();  // chama a função jogar()
                 break;
             case "btMedio":
-                dificuldade = "medio";
+                dificuldade = "medio"; // Atualiza a String dificuldade para "medio"
                 Debug.Log(dificuldade);
-                Jogar();
+                Jogar();  // chama a função jogar()
                 break;
             case "btDificil":
-                dificuldade = "dificil";
+                dificuldade = "dificil"; // Atualiza a String dificuldade para "dificil"
                 Debug.Log(dificuldade);
-                Jogar();
+                Jogar(); // chama a função jogar()
                 break;
         }
     }

@@ -14,8 +14,8 @@ public class FollowCameraVertical : MonoBehaviour
 
     private Transform cameraTransform;
     private int hitsTaken = 0;
-    
-    string dificuldade = MenuPrincipalManager.dificuldade;
+
+    string dificuldade = MenuPrincipalManager.dificuldade; // Passagem da dificuldade static do script MenuPrincipalManager
 
     void Start()
     {
