@@ -104,6 +104,7 @@ public class Jogador : MonoBehaviour{
                 MusicaJogo.Stop();
                 Correndo.Stop();
                 Jetpack.Stop();
+                Boss.bossPresente = false;
                 SceneManager.LoadScene(nomeMenuPrincipal);
             }
             

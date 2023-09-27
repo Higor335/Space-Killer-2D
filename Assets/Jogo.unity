@@ -957,9 +957,9 @@ MonoBehaviour:
   Inimigo1Prefab: {fileID: 2162778516797340556, guid: a17df539faecb8840968ea46da6f6017, type: 3}
   Inimigo2Prefab: {fileID: 7847466087174818719, guid: a53cec94f0efb494e9079278ff5c2b2a, type: 3}
   Inimigo3Prefab: {fileID: 7847466087174818719, guid: f1c8a3986a887874f893ef77d3fcaca0, type: 3}
-  Boss1Prefab: {fileID: 0}
-  Boss2Prefab: {fileID: 0}
-  Boss3Prefab: {fileID: 0}
+  Boss1Prefab: {fileID: 7847466087174818719, guid: f77baebbe2d278d4e9952d33a431f99f, type: 3}
+  Boss2Prefab: {fileID: 7847466087174818719, guid: 97bc720886f414a408a10485b7060adb, type: 3}
+  Boss3Prefab: {fileID: 7847466087174818719, guid: 3264ee676adf2eb40bccfd9e8a0cb3ad, type: 3}
   minY: -3.65
   maxY: 3.88
   speed: 1
@@ -2184,6 +2184,8 @@ MonoBehaviour:
   vida1: {fileID: 313868684}
   vida0: {fileID: 1579001594}
   nomeMenuPrincipal: MenuPrincipal
+  bulletPrefab: {fileID: 8195294007705700600, guid: fa704af4540a0ad4284cbd66b797ebc2, type: 3}
+  fireRate: 1.5
   velocidadeVertical: 7
   vida: 3
 --- !u!68 &1231836647
