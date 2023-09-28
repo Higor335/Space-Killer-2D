@@ -69,8 +69,7 @@ public class EnemyController : MonoBehaviour
             int hitsNeeded = 0;
             string dificuldade = MenuPrincipalManager.dificuldade;
 
-            switch (dificuldade)
-            {
+            switch (dificuldade){
                 case "facil":
                     hitsNeeded = 3;
                     break;
@@ -81,6 +80,7 @@ public class EnemyController : MonoBehaviour
                     hitsNeeded = 8;
                     break;
             }
+            Debug.Log(hitsNeeded);
         }
     }
 

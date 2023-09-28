@@ -23,8 +23,6 @@ public class Inimigo : MonoBehaviour
 
     string dificuldade = MenuPrincipalManager.dificuldade; // Passagem da dificuldade static do script MenuPrincipalManager
 
-    private bool invisivel = false;
-
     void Start(){
         cameraTransform = Camera.main.transform;
     }
@@ -80,7 +78,6 @@ public class Inimigo : MonoBehaviour
         Renderer renderer = GetComponent<Renderer>();
 
         if (renderer != null){
-            invisivel = true;
             int numBlinks = 5;
 
             for (int i = 0; i < numBlinks; i++){
@@ -92,8 +89,6 @@ public class Inimigo : MonoBehaviour
 
                 yield return new WaitForSeconds(0.1f);
             }
-
-            invisivel = false;
         }
     }
 }

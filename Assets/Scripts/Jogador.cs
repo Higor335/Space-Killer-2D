@@ -28,7 +28,6 @@ public class Jogador : MonoBehaviour{
     public float velocidadeVertical = 7.0f;
     private Animator anim;
     public int vida=0;
-    private bool invisivel = false;
     bool jetpackAtivo = false;
     bool correndoAtivo = false;
     Color32 CorDano = new Color32(73, 10, 10, 255);
@@ -116,23 +115,23 @@ public class Jogador : MonoBehaviour{
     }
 
     IEnumerator DesabilitaColisaoEpiscaJogador(GameObject obj){
-        Collider2D collider = obj.GetComponent<Collider2D>();
+    Collider2D collider = obj.GetComponent<Collider2D>();
 
-        if (GetComponent<Renderer>() != null){
-            collider.enabled = false;
+    if (collider != null && GetComponent<Renderer>() != null){
+        collider.enabled = false;
 
-            StartCoroutine(BlinkEffect());
-            yield return new WaitForSeconds(1f);
+        StartCoroutine(BlinkEffect());
+        yield return new WaitForSeconds(1f);
 
+        if (collider != null) // Verifica novamente antes de reativar o collider
             collider.enabled = true;
-        }
     }
+}
 
     IEnumerator BlinkEffect(){
         Renderer renderer = GetComponent<Renderer>();
 
         if (renderer != null){
-            invisivel = true;
             int numBlinks = 5;
 
             for (int i = 0; i < numBlinks; i++){
@@ -144,8 +143,6 @@ public class Jogador : MonoBehaviour{
 
                 yield return new WaitForSeconds(0.1f);
             }
-
-            invisivel = false;
         }
     }
 

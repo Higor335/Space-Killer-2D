@@ -3,7 +3,16 @@ guid: c4518c7b1fd236147aba0dec78a6842d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Correndo: {instanceID: 0}
+  - Jetpack: {instanceID: 0}
+  - MusicaJogo: {instanceID: 0}
+  - DanoParede: {instanceID: 0}
+  - Tiro: {instanceID: 0}
+  - vida2: {instanceID: 0}
+  - vida1: {instanceID: 0}
+  - vida0: {instanceID: 0}
+  - bulletPrefab: {fileID: 8195294007705700600, guid: fa704af4540a0ad4284cbd66b797ebc2, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

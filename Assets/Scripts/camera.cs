@@ -8,7 +8,7 @@ public class camera : MonoBehaviour{
 
     // Start is called before the first frame update
     void Start(){
-                Screen.SetResolution(1308, 669, true);
+    
     }
 
     // Update is called once per frame

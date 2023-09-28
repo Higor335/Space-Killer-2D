@@ -18,17 +18,14 @@ public class MenuPrincipalManager : MonoBehaviour
 
     int pontuacao = Inimigo.pontuacao;
 
-    void Start()
-    {
+    void Start(){
         // Listener dos botões
         btFacil.onClick.AddListener(() => SelecionarDificuldade(btFacil));
         btMedio.onClick.AddListener(() => SelecionarDificuldade(btMedio));
         btDificil.onClick.AddListener(() => SelecionarDificuldade(btDificil));
     }
 
-    public void Jogar()
-    {
-        Screen.SetResolution(1308, 669, true);
+    public void Jogar(){
         Inimigo.pontuacao = 0; // Reseta Pontuação
         SceneManager.LoadScene(nomeDoLevelDeJogo);
     }
